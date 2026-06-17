@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Idir Mazari — Coaching Soccer Privé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --noir:    #0a0a0a;
+      --noir-2:  #141414;
+      --noir-3:  #1e1e1e;
+      --bleu:    #1a3a5c;
+      --bleu-2:  #1e4a78;
+      --or:      #c9a84c;
+      --or-2:    #e8c96a;
+      --or-pale: #f5e8bc;
+      --blanc:   #f7f4ef;
+      --gris:    #888;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @media print {
+      body { background: white !important; color: black !important; }
+      .lang-btn { display: none; }
+      .page { box-shadow: none; max-width: 100%; }
+      .no-print { display: none; }
+    }
+
+    body {
+      background: #111;
+      font-family: 'Inter', sans-serif;
+      color: var(--blanc);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 48px;
+    }
+
+    /* ── LANGUAGE TOGGLE ─────────────────── */
+    .top-bar {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1.5px solid var(--or);
+      color: var(--or);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .lang-btn:hover {
+      background: var(--or);
+      color: var(--noir);
+    }
+
+
+    /* ── LOGO ────────────────────────────── */
+    @media (max-width: 580px) {
+    }
+
+    /* ── CARD ────────────────────────────── */
+    .page {
+      width: 100%;
+      max-width: 800px;
+      background: var(--noir-2);
+      box-shadow: 0 8px 64px rgba(0,0,0,0.7);
+      overflow: hidden;
+    }
+
+    /* ── HERO ────────────────────────────── */
+    .hero {
+      background: var(--bleu);
+      background: linear-gradient(135deg, #0a1829 0%, #1a3a5c 55%, #0d2240 100%);
+      padding: 52px 48px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,168,76,0.15);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -30px; right: -30px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(201,168,76,0.25);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 18px;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-name span {
+      color: var(--or);
+    }
+
+    .hero-tagline {
+      margin-top: 14px;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(247,244,239,0.75);
+      letter-spacing: 0.3px;
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    .hero-divider {
+      width: 56px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--or), transparent);
+      margin: 28px 0 0;
+    }
+
+    /* ── SECTIONS ────────────────────────── */
+    .section {
+      padding: 40px 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .section-body {
+      font-size: 14.5px;
+      font-weight: 400;
+      color: rgba(247,244,239,0.72);
+      line-height: 1.8;
+    }
+
+    /* ── PILLARS ─────────────────────────── */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .pillar {
+      background: var(--noir-3);
+      border-left: 3px solid var(--or);
+      padding: 16px 18px;
+    }
+
+    .pillar-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--or-2);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .pillar-body {
+      font-size: 13px;
+      color: rgba(247,244,239,0.6);
+      line-height: 1.6;
+    }
+
+    /* ── WINTER BANNER ───────────────────── */
+    .winter-banner {
+      background: linear-gradient(135deg, #0d1f35 0%, #162d4a 100%);
+      border: 1px solid rgba(201,168,76,0.3);
+      margin: 0 48px 0;
+      padding: 28px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .winter-icon {
+      font-size: 36px;
+      flex-shrink: 0;
+    }
+
+    .winter-text-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .winter-text-sub {
+      font-size: 13.5px;
+      color: rgba(247,244,239,0.65);
+      line-height: 1.6;
+    }
+
+    /* ── PRICING ─────────────────────────── */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .price-card {
+      background: var(--noir-3);
+      padding: 24px 22px;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .price-card.featured {
+      border: 1.5px solid var(--or);
+    }
+
+    .price-badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--or);
+      color: var(--noir);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      white-space: nowrap;
+    }
+
+    .price-season {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gris);
+      margin-bottom: 14px;
+    }
+
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 46px;
+      font-weight: 900;
+      color: var(--or);
+      line-height: 1;
+    }
+
+    .price-unit {
+      font-size: 13px;
+      color: var(--gris);
+      margin-top: 4px;
+    }
+
+    /* ── LOCATION ────────────────────────── */
+    .location-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 20px;
+      background: var(--noir-3);
+      padding: 20px 22px;
+    }
+
+    .location-icon {
+      font-size: 22px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .location-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 5px;
+    }
+
+    .location-name {
+      font-size: 15px;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .location-detail {
+      font-size: 13px;
+      color: var(--gris);
+      margin-top: 2px;
+    }
+
+    /* ── CTA ─────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--bleu) 0%, #0d1f35 100%);
+      padding: 40px 48px;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .cta-sub {
+      font-size: 14px;
+      color: rgba(247,244,239,0.6);
+      margin-bottom: 28px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--or);
+      color: var(--noir);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 15px 40px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: var(--or-2); }
+
+    .cta-contact {
+      margin-top: 18px;
+      font-size: 13px;
+      color: rgba(247,244,239,0.45);
+    }
+
+    /* ── FOOTER ──────────────────────────── */
+    .footer {
+      padding: 22px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--or);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: var(--gris);
+    }
+
+    @media (max-width: 580px) {
+      .hero, .section, .cta-section, .footer { padding-left: 24px; padding-right: 24px; }
+      .winter-banner { margin: 0 24px; }
+      .pillars, .pricing-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">English</button>
+  </div>
+
+  <div class="page">
+
+    <!-- HERO -->
+    <div class="hero">
+    <div class="hero-eyebrow" data-fr="⚽ Coaching Soccer Privé" data-en="⚽ Private Soccer Coaching">⚽ Coaching Soccer Privé</div>
+    <div class="hero-name">Idir <span>Mazari</span></div>
+      <div class="hero-tagline" data-fr="Un entraîneur dédié à ton développement. Chaque séance est construite autour de toi — ton niveau, tes objectifs, ton potentiel." data-en="A coach dedicated to your development. Every session is built around you — your level, your goals, your potential.">
+        Un entraîneur dédié à ton développement. Chaque séance est construite autour de toi — ton niveau, tes objectifs, ton potentiel.
+      </div>
+      <div class="hero-divider"></div>
+    </div>
+
+    <!-- SECTION 1 : PROFIL -->
+    <div class="section">
+      <div class="section-label" data-fr="À propos" data-en="About">À propos</div>
+      <div class="section-title" data-fr="Un programme taillé sur mesure" data-en="A Tailored Training Program">Un programme taillé sur mesure</div>
+      <div class="section-body" data-fr="Je propose un service de coaching soccer individuel conçu pour s'adapter au profil unique de chaque joueur. Que ton enfant soit débutant, en développement ou en compétition, chaque séance est pensée pour maximiser sa progression — techniquement, tactiquement et mentalement. Mon approche combine rigueur, bienveillance et passion du jeu." data-en="I offer individual soccer coaching designed to adapt to each player's unique profile. Whether your child is a beginner, developing, or competitive, every session is crafted to maximize their progress — technically, tactically, and mentally. My approach combines discipline, encouragement, and a genuine passion for the game.">
+        Je propose un service de coaching soccer individuel conçu pour s'adapter au profil unique de chaque joueur. Que ton enfant soit débutant, en développement ou en compétition, chaque séance est pensée pour maximiser sa progression — techniquement, tactiquement et mentalement. Mon approche combine rigueur, bienveillance et passion du jeu.
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-title" data-fr="🎯 Analyse du joueur" data-en="🎯 Player Assessment">🎯 Analyse du joueur</div>
+          <div class="pillar-body" data-fr="Évaluation du niveau et des points à développer dès la première séance." data-en="Level evaluation and areas for improvement assessed from the very first session.">Évaluation du niveau et des points à développer dès la première séance.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title" data-fr="📋 Plan personnalisé" data-en="📋 Personalized Plan">📋 Plan personnalisé</div>
+          <div class="pillar-body" data-fr="Exercices et objectifs adaptés à chaque joueur, ajustés à chaque séance." data-en="Exercises and goals tailored to each player, adjusted every session.">Exercices et objectifs adaptés à chaque joueur, ajustés à chaque séance.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title" data-fr="📈 Suivi de progression" data-en="📈 Progress Tracking">📈 Suivi de progression</div>
+          <div class="pillar-body" data-fr="Retours réguliers aux parents sur l'évolution et les prochains défis." data-en="Regular feedback to parents on improvement and upcoming challenges.">Retours réguliers aux parents sur l'évolution et les prochains défis.</div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-title" data-fr="🔥 Engagement & passion" data-en="🔥 Commitment & Passion">🔥 Engagement & passion</div>
+          <div class="pillar-body" data-fr="Un coaching actif et engagé — pas un simple observateur sur le terrain." data-en="Active, hands-on coaching — not just watching from the sidelines.">Un coaching actif et engagé — pas un simple observateur sur le terrain.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WINTER BANNER -->
+    <div class="winter-banner">
+      <div class="winter-icon">❄️</div>
+      <div>
+        <div class="winter-text-title" data-fr="Session d'hiver — Inscriptions ouvertes" data-en="Winter Session — Registrations Now Open">Session d'hiver — Inscriptions ouvertes</div>
+        <div class="winter-text-sub" data-fr="Places limitées. Réserve la tienne dès maintenant pour garantir ton accès à un entraînement de qualité cet hiver." data-en="Spots are limited. Reserve yours now to secure quality training this winter.">Places limitées. Réserve la tienne dès maintenant pour garantir ton accès à un entraînement de qualité cet hiver.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 2 : TARIFS & LOCALISATION -->
+    <div class="section">
+      <div class="section-label" data-fr="Tarifs" data-en="Pricing">Tarifs</div>
+      <div class="section-title" data-fr="Investir dans le développement de ton joueur" data-en="Invest in Your Player's Development">Investir dans le développement de ton joueur</div>
+      <div class="section-body" data-fr="Des tarifs accessibles pour un coaching de qualité professionnelle." data-en="Accessible pricing for professional-quality coaching.">Des tarifs accessibles pour un coaching de qualité professionnelle.</div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-season" data-fr="Été" data-en="Summer">Été</div>
+          <div class="price-amount">30$</div>
+          <div class="price-unit" data-fr="par séance" data-en="per session">par séance</div>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge" data-fr="Session active" data-en="Active Session">Session active</div>
+          <div class="price-season" data-fr="Hiver" data-en="Winter">Hiver</div>
+          <div class="price-amount">45$</div>
+          <div class="price-unit" data-fr="par séance" data-en="per session">par séance</div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-top: 32px;" data-fr="Localisation" data-en="Location">Localisation</div>
+      <div class="location-row">
+        <div class="location-icon">📍</div>
+        <div>
+          <div class="location-label" data-fr="Gymnase" data-en="Gymnasium">Gymnase</div>
+          <div class="location-name">Collège Laval</div>
+          <div class="location-detail" data-fr="Laval, Québec — Détails communiqués lors de l'inscription" data-en="Laval, Québec — Details provided upon registration">Laval, Québec — Détails communiqués lors de l'inscription</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <div class="cta-title" data-fr="Prêt à rejoindre la session d'hiver ?" data-en="Ready to Join the Winter Session?">Prêt à rejoindre la session d'hiver ?</div>
+      <div class="cta-sub" data-fr="Contacte-moi directement pour réserver ta place. Les créneaux se remplissent vite." data-en="Contact me directly to reserve your spot. Slots fill up fast.">Contacte-moi directement pour réserver ta place. Les créneaux se remplissent vite.</div>
+      <a href="https://tally.so/r/pbzMP8" target="_blank" class="cta-btn" data-fr="Réserver une séance" data-en="Book a Session">Réserver une séance</a>
+      <div class="cta-contact" data-fr="📧 [ton email] &nbsp;|&nbsp; 📱 [ton numéro]" data-en="📧 [your email] &nbsp;|&nbsp; 📱 [your number]">📧 [ton email] &nbsp;|&nbsp; 📱 [ton numéro]</div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-name">Idir Mazari Coaching</div>
+      <div class="footer-note" data-fr="Session Hiver 2025" data-en="Winter Session 2025">Session Hiver 2025</div>
+    </div>
+
+  </div>
+
+  <div class="top-bar no-print" style="margin-top: 20px; justify-content: center;">
+    <span style="font-size: 12px; color: #555; letter-spacing: 1px;">Pour enregistrer en PDF : Fichier → Imprimer → Enregistrer en PDF</span>
+  </div>
+
+  <script>
+    let currentLang = 'fr';
+
+    function toggleLang() {
+      currentLang = currentLang === 'fr' ? 'en' : 'fr';
+      const btn = document.getElementById('langBtn');
+      btn.textContent = currentLang === 'fr' ? 'English' : 'Français';
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll('[data-fr]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + currentLang);
+      });
+    }
+  </script>
+
+</body>
+</html>
